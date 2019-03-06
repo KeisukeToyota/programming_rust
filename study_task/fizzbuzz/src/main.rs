@@ -11,17 +11,17 @@ fn is_fizzbuzz(x: i32) -> bool {
 }
 
 // 一般的なやつ
-// fn fizzbuzz(x: i32) -> String {
-//     if is_fizzbuzz(x) {
-//         "FizzBuzz".to_string()
-//     } else if is_fizz(x) {
-//         "Fizz".to_string()
-//     } else if is_buzz(x) {
-//         "Buzz".to_string()
-//     } else {
-//         x.to_string()
-//     }
-// }
+fn standard_fizzbuzz(x: i32) -> String {
+    if is_fizzbuzz(x) {
+        "FizzBuzz".to_string()
+    } else if is_fizz(x) {
+        "Fizz".to_string()
+    } else if is_buzz(x) {
+        "Buzz".to_string()
+    } else {
+        x.to_string()
+    }
+}
 
 // パターンマッチ使ったやつ
 fn fizzbuzz(x: i32) -> String {
@@ -35,12 +35,15 @@ fn fizzbuzz(x: i32) -> String {
 
 fn main() {
     for x in 1..100 {
+        println!("{}", standard_fizzbuzz(x));
+    }
+    for x in 1..100 {
         println!("{}", fizzbuzz(x));
     }
 }
 
 #[cfg(test)]
-mod test {
+mod tests {
     use super::*;
     #[test]
     fn test_is_fizz() {
@@ -68,6 +71,18 @@ mod test {
         assert_eq!(is_fizzbuzz(x), false);
         assert_eq!(is_fizzbuzz(y), false);
         assert_eq!(is_fizzbuzz(z), true);
+    }
+
+    #[test]
+    fn test_standard_fizzbuzz() {
+        let (a, b, c) = (8, 11, 91);
+        let (x, y, z) = (3, 5, 15);
+        assert_eq!(standard_fizzbuzz(a), a.to_string());
+        assert_eq!(standard_fizzbuzz(b), b.to_string());
+        assert_eq!(standard_fizzbuzz(c), c.to_string());
+        assert_eq!(standard_fizzbuzz(x), "Fizz".to_string());
+        assert_eq!(standard_fizzbuzz(y), "Buzz".to_string());
+        assert_eq!(standard_fizzbuzz(z), "FizzBuzz".to_string());
     }
 
     #[test]
