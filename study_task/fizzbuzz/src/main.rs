@@ -38,3 +38,47 @@ fn main() {
         println!("{}", fizzbuzz(x));
     }
 }
+
+#[cfg(test)]
+mod test {
+    use super::*;
+    #[test]
+    fn test_is_fizz() {
+        let (x, y, z) = (3, 5, 15);
+        assert_eq!(is_fizz(x), true);
+        assert_eq!(is_fizz(y), false);
+        assert_eq!(is_fizz(z), true);
+    }
+
+    #[test]
+    fn test_is_buzz() {
+        let (x, y, z) = (3, 5, 15);
+        assert_eq!(is_buzz(x), false);
+        assert_eq!(is_buzz(y), true);
+        assert_eq!(is_buzz(z), true);
+    }
+
+    #[test]
+    fn test_is_fizzbuzz() {
+        let (a, b, c) = (8, 11, 91);
+        let (x, y, z) = (3, 5, 15);
+        assert_eq!(is_fizzbuzz(a), false);
+        assert_eq!(is_fizzbuzz(b), false);
+        assert_eq!(is_fizzbuzz(c), false);
+        assert_eq!(is_fizzbuzz(x), false);
+        assert_eq!(is_fizzbuzz(y), false);
+        assert_eq!(is_fizzbuzz(z), true);
+    }
+
+    #[test]
+    fn test_fizzbuzz() {
+        let (a, b, c) = (8, 11, 91);
+        let (x, y, z) = (3, 5, 15);
+        assert_eq!(fizzbuzz(a), a.to_string());
+        assert_eq!(fizzbuzz(b), b.to_string());
+        assert_eq!(fizzbuzz(c), c.to_string());
+        assert_eq!(fizzbuzz(x), "Fizz".to_string());
+        assert_eq!(fizzbuzz(y), "Buzz".to_string());
+        assert_eq!(fizzbuzz(z), "FizzBuzz".to_string());
+    }
+}
