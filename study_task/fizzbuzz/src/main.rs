@@ -25,11 +25,11 @@ fn standard_fizzbuzz(x: i32) -> String {
 
 // パターンマッチ使ったやつ
 fn fizzbuzz(x: i32) -> String {
-    return match x {
+    match x {
         n if is_fizzbuzz(n) => "FizzBuzz".to_string(),
         n if is_fizz(n) => "Fizz".to_string(),
         n if is_buzz(n) => "Buzz".to_string(),
-        n => n.to_string()
+        n => n.to_string(),
     }
 }
 
